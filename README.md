@@ -61,6 +61,7 @@ composer require league/oauth2-client
 Créez un fichier index.php :
 
 ```php
+
 <?php
 require_once 'vendor/autoload.php';
 
@@ -70,9 +71,9 @@ $provider = new GenericProvider([
     'clientId'                => 'my_php_app',
     'clientSecret'            => '',
     'redirectUri'             => 'http://192.168.1.5:8080/',
-    'urlAuthorize'            => 'http://192.168.1.100:8090/auth/realms/MyRealm/protocol/openid-connect/auth',
-    'urlAccessToken'          => 'http://192.168.1.100:8090/auth/realms/MyRealm/protocol/openid-connect/token',
-    'urlResourceOwnerDetails' => 'http://192.168.1.100:8090/auth/realms/MyRealm/protocol/openid-connect/userinfo'
+    'urlAuthorize'            => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/auth',
+    'urlAccessToken'          => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/token',
+    'urlResourceOwnerDetails' => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/userinfo'
 ]);
 
 if (!isset($_GET['code'])) {
@@ -87,6 +88,7 @@ if (!isset($_GET['code'])) {
     $accessToken = $provider->getAccessToken('authorization_code', ['code' => $_GET['code']]);
     echo 'Access Token: ' . $accessToken->getToken();
 }
+
 ```
 
 ## Étape 5 : Exécution et Test
