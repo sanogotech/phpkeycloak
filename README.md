@@ -30,7 +30,7 @@ Un **realm** dans Keycloak représente un espace virtuel où l'on gère un ensem
 ### Création d'un Client
 
 1. Allez à `Clients` dans le menu de gauche et cliquez sur `Create`.
-2. Entrez `my_php_app` comme `Client ID`.
+2. Entrez `my_phpCRM_app` comme `Client ID`.
 3. Sélectionnez `public` pour `Access Type`.
 4. Configurez `Valid Redirect URIs` pour utiliser une adresse IP spécifique (ex. `http://192.168.1.5:8080/*`).
 5. Cliquez sur `Save`.
@@ -40,7 +40,7 @@ Un **realm** dans Keycloak représente un espace virtuel où l'on gère un ensem
 | Action                       | Description                                                                                                                                                      |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Création d'un Realm          | - Accédez à `Add realm`.<br>- Nommez le realm `SecureSpaceCRM` et confirmez avec `Create`.                                                                        |
-| Création d'un Client         | - Allez à `Clients`.<br>- Cliquez sur `Create`.<br>- Entrez `my_php_app` comme `Client ID`.<br>- Sélectionnez `public` pour `Access Type`.<br>- Configurez `Valid Redirect URIs` à `http://192.168.1.5:8080/*`.<br>- Cliquez sur `Save`. |
+| Création d'un Client         | - Allez à `Clients`.<br>- Cliquez sur `Create`.<br>- Entrez `my_phpCRM_app` comme `Client ID`.<br>- Sélectionnez `public` pour `Access Type`.<br>- Configurez `Valid Redirect URIs` à `http://192.168.1.5:8080/*`.<br>- Cliquez sur `Save`. |
 | Ajout d'un Utilisateur       | - Allez à `Users`.<br>- Cliquez sur `Add user`.<br>- Remplissez les champs requis (Username, Email, First Name, Last Name).
 
 
@@ -81,7 +81,7 @@ require_once 'vendor/autoload.php';
 use League\OAuth2\Client\Provider\GenericProvider;
 
 $provider = new GenericProvider([
-    'clientId'                => 'my_php_app',
+    'clientId'                => 'my_phpCRM_app',
     'clientSecret'            => '',
     'redirectUri'             => 'http://192.168.1.5:8080/',
     'urlAuthorize'            => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/auth',
@@ -112,7 +112,7 @@ if (!isset($_GET['code'])) {
 | Configuration| - Importer les dépendances avec `require_once 'vendor/autoload.php'`.                                                                                                     |
 |              | - Utiliser la classe `League\OAuth2\Client\Provider\GenericProvider`.                                                                                                     |
 |              | - Configurer l'instance de `GenericProvider` avec les paramètres :                                                                                                        |
-|              |   - `clientId` : `my_php_app`                                                                                                                                            |
+|              |   - `clientId` : `my_phpCRM_app`                                                                                                                                            |
 |              |   - `clientSecret` : `''` (laisser vide pour un client public)                                                                                                           |
 |              |   - `redirectUri` : `http://192.168.1.5:8080/`                                                                                                                           |
 |              |   - `urlAuthorize` : `http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/auth`                                                                 |
