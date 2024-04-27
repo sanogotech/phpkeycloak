@@ -102,6 +102,21 @@ if (!isset($_GET['code'])) {
 
 ```
 
+**Synthèse**
+
+| Fichier      | Action                                                                                                                                                                   |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `index.php`  | - Créer le fichier PHP.                                                                                                                                                  |
+| Configuration| - Importer les dépendances avec `require_once 'vendor/autoload.php'`.                                                                                                     |
+|              | - Utiliser la classe `League\OAuth2\Client\Provider\GenericProvider`.                                                                                                     |
+|              | - Configurer l'instance de `GenericProvider` avec les paramètres :                                                                                                        |
+|              |   - `clientId` : `my_php_app`                                                                                                                                            |
+|              |   - `clientSecret` : `''` (laisser vide pour un client public)                                                                                                           |
+|              |   - `redirectUri` : `http://192.168.1.5:8080/`                                                                                                                           |
+|              |   - `urlAuthorize` : `http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/auth`                                                                 |
+|              |   - `urlAccessToken` : `http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/token`                                                              |
+|              |   - `urlResourceOwnerDetails` : `http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/userinfo`                                                  |
+
 ## Étape 5 : Exécution et Test
 
 - Lancez le serveur PHP sur un port spécifique (ex. `php -S 192.168.1.5:8080` dans le répertoire de votre projet).
