@@ -30,8 +30,22 @@ Téléchargez et installez Keycloak depuis [le site officiel](https://www.keyclo
 
 ### Ajout d'un Utilisateur (Optionnel)
 
-1. Allez à `Users`, puis `Add user`.
-2. Remplissez les détails et définissez un mot de passe sous `Credentials`.
+1. Allez à `Users` dans le menu de gauche de la console d'administration de Keycloak.
+2. Cliquez sur `Add user`.
+3. Remplissez les champs requis pour le nouvel utilisateur :
+   - **Username:** Saisissez un nom d'utilisateur, par exemple `koffi`.
+   - **Email:** Optionnel, mais vous pouvez saisir une adresse email pour l'utilisateur.
+   - **First Name:** Prénom de l'utilisateur.
+   - **Last Name:** Nom de famille de l'utilisateur.
+   - **Enabled:** Assurez-vous que cette option est activée pour permettre à l'utilisateur de se connecter.
+4. Cliquez sur `Save` pour créer l'utilisateur.
+5. Après avoir enregistré l'utilisateur, ouvrez l'onglet `Credentials` de l'utilisateur créé.
+6. Entrez un mot de passe initial pour l'utilisateur dans le champ `New Password` et confirmez-le dans `Password Confirmation`.
+7. Assurez-vous que l'option `Temporary` est décochée si vous ne voulez pas obliger l'utilisateur à changer de mot de passe à sa première connexion.
+8. Cliquez sur `Set Password` pour appliquer le nouveau mot de passe.
+
+Ces étapes garantissent que l'utilisateur est prêt à être utilisé pour l'authentification et que tous les champs requis sont correctement configurés.
+
 
 ## Étape 3 : Installation des dépendances PHP
 
