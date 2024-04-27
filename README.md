@@ -1,3 +1,4 @@
+
 # Intégration de Keycloak avec PHP
 
 Ce guide explique comment intégrer Keycloak à une application PHP pour gérer l'authentification et l'autorisation des utilisateurs.
@@ -14,11 +15,15 @@ Téléchargez et installez Keycloak depuis [le site officiel](https://www.keyclo
 
 ## Étape 2 : Configuration de Keycloak
 
+### Qu'est-ce qu'un Realm ?
+
+Un **realm** dans Keycloak représente un espace virtuel où l'on gère un ensemble d'utilisateurs, leurs rôles, les groupes et les applications. Chaque realm est une entité indépendante avec son propre ensemble d'utilisateurs, clients (applications) et configurations de sécurité. Les realms sont utiles pour configurer des environnements distincts pour différents départements ou projets au sein d'une même organisation.
+
 ### Création d'un Realm
 
 1. Connectez-vous à la console d'administration de Keycloak à l'adresse `http://192.168.1.100:8090`.
 2. Cliquez sur `Add realm`.
-3. Nommez-le (ex. `MyRealm`) et confirmez avec `Create`.
+3. Nommez-le `SecureSpaceCRM` et confirmez avec `Create`.
 
 ### Création d'un Client
 
@@ -43,9 +48,6 @@ Téléchargez et installez Keycloak depuis [le site officiel](https://www.keyclo
 6. Entrez un mot de passe initial pour l'utilisateur dans le champ `New Password` et confirmez-le dans `Password Confirmation`.
 7. Assurez-vous que l'option `Temporary` est décochée si vous ne voulez pas obliger l'utilisateur à changer de mot de passe à sa première connexion.
 8. Cliquez sur `Set Password` pour appliquer le nouveau mot de passe.
-
-Ces étapes garantissent que l'utilisateur est prêt à être utilisé pour l'authentification et que tous les champs requis sont correctement configurés.
-
 
 ## Étape 3 : Installation des dépendances PHP
 
