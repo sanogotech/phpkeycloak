@@ -58,6 +58,14 @@ composer require league/oauth2-client
 ```
 ## Étape 4 : Création du script PHP
 
+
+| Action                       | Description                                                                                                                                                      |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Création d'un Realm          | - Accédez à `Add realm`.<br>- Nommez le realm `SecureSpaceCRM` et confirmez avec `Create`.                                                                        |
+| Création d'un Client         | - Allez à `Clients`.<br>- Cliquez sur `Create`.<br>- Entrez `my_php_app` comme `Client ID`.<br>- Sélectionnez `public` pour `Access Type`.<br>- Configurez `Valid Redirect URIs` à `http://192.168.1.5:8080/*`.<br>- Cliquez sur `Save`. |
+| Ajout d'un Utilisateur       | - Allez à `Users`.<br>- Cliquez sur `Add user`.<br>- Remplissez les champs requis (Username, Email, First Name, Last Name).
+
+
 Créez un fichier index.php :
 
 ```php
