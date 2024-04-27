@@ -9,7 +9,9 @@ Ce guide explique comment intégrer Keycloak à une application PHP pour gérer 
 - PHP installé localement ou sur un serveur, configuré pour écouter sur le port 8080
 - Composer pour la gestion des dépendances PHP
 
-## Étape 1 : Installation de Keycloak
+## Étape 1 : Installation de Keycloak (Optionnel)
+
+Si vous n'avez pas encore Keycloak installé et que vous souhaitez configurer un environnement de test ou de développement, suivez ces instructions. Si vous comptez vous connecter à un environnement de recette ou de production déjà en place, vous pouvez passer cette étape.
 
 Téléchargez et installez Keycloak depuis [le site officiel](https://www.keycloak.org/downloads.html). Suivez les instructions pour démarrer le serveur sur le port 8090.
 
