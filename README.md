@@ -167,18 +167,42 @@ try {
 ## Étape 5 : Diagramme de Séquence Détaillé
 
 ```mermaid
+
+## Étape 6 : Diagramme de Séquence Détaillé
+
+Ce diagramme de séquence illustre le flux d'authentification détaillé, incluant la vérification de l'existence de l'utilisateur dans la base de données locale de Keycloak ainsi que dans Active Directory.
+
+```mermaid
 sequenceDiagram
     participant U as Utilisateur
     participant P as Application PHP
     participant K as Keycloak
     participant AD as Active Directory
+    participant BD as Base de données locale Keycloak
 
-    U->>P: Demande d'accès à la ressource
-    P->>K: Redirection vers Keycloak pour authentification
-    K->>AD: Vérification des crédentials de l'utilisateur
-    AD->>K: Retour de la validation
-    K->>P: Retourne le token d'accès à l'application PHP
-    P->>U: Accès accordé avec le token
+    U->>P: Demande d'authentification
+    P->>K: Redirection vers Keycloak
+    K->>U: Formulaire de connexion
+
+    U->>K: Soumet les credentials
+    K->>BD: Vérifie si l'utilisateur existe dans la base locale
+    BD-->>K: Résultat de la vérification
+
+    alt Si utilisateur non trouvé dans la base locale
+        K->>AD: Requête pour vérifier l'utilisateur
+        AD-->>K: Réponse d'AD (utilisateur trouvé ou non)
+        alt Si utilisateur trouvé dans AD
+            K->>BD: Crée ou met à jour l'utilisateur dans la base locale
+        end
+    end
+
+    alt Authentification réussie
+        K-->>P: Renvoie le token à l'application
+        P-->>U: Accès autorisé
+    else Authentification échouée
+        K-->>U: Affiche erreur d'authentification
+    end
+
 
 ```
 
