@@ -220,6 +220,10 @@ Le tableau suivant résume les interactions clés entre l'utilisateur, l'applica
 
 Ce tableau aide à visualiser et comprendre les étapes séquentielles et les décisions prises lors de l'authentification d'un utilisateur, montrant l'interaction entre différents systèmes pour gérer l'authentification de manière sécurisée et efficace.
 
+** Exemple Page de login /Keycloak**
+
+![Login Page](https://github.com/sanogotech/phpkeycloak/blob/main/images/keycloaklogin.png)
+
 ### Synthèse de l'Ajout de la Gestion des Erreurs
 
 | Action                           | Description                                                                                                                                                             |
