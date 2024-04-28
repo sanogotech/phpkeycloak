@@ -244,6 +244,19 @@ Ce tableau offre un aperçu clair des étapes ajoutées au script PHP pour gére
 
 - Pour un développement et des tests locaux, remplacez `192.168.1.5` par `localhost` et ajustez les ports comme nécessaire.
 
+## Divers / Sécurité et recommandations (Bonus)
+Il est essentiel de sécuriser les communications entre votre application PHP et Keycloak. Assurez-vous que tous les échanges de données sont effectués sur HTTPS et que le clientSecret est bien protégé et n'est pas exposé publiquement.
+
+**Protection du clientSecret**
+
+Le clientSecret est une clé utilisée pour sécuriser la communication entre votre application et Keycloak. Il est crucial de le garder sécurisé et de ne jamais l'exposer publiquement.
+
+Exemple :
+
+```php
+// Stockez le clientSecret dans un fichier de configuration sécurisé ou une variable d'environnement
+$clientSecret = getenv('KEYCLOAK_CLIENT_SECRET');
+```
 ## Conclusion
 
 Vous avez maintenant une application PHP capable de s'authentifier via Keycloak en utilisant les informations de connexion d'un utilisateur de test. Adaptez les paramètres et les configurations selon les besoins spécifiques de votre projet.
