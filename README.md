@@ -3,6 +3,7 @@
 
 Ce guide explique comment intégrer Keycloak à une application PHP pour gérer l'authentification et l'autorisation des utilisateurs.
 
+
 ## Prérequis
 
 - Un serveur Keycloak opérationnel sur le port 8090
