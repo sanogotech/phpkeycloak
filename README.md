@@ -43,6 +43,9 @@ Un **realm** dans Keycloak représente un espace virtuel où l'on gère un ensem
 | Création d'un Client         | - Allez à `Clients`.<br>- Cliquez sur `Create`.<br>- Entrez `my_phpCRM_app` comme `Client ID`.<br>- Sélectionnez `public` pour `Access Type`.<br>- Configurez `Valid Redirect URIs` à `http://192.168.1.5:8080/*`.<br>- Cliquez sur `Save`. |
 | Ajout d'un Utilisateur       | - Allez à `Users`.<br>- Cliquez sur `Add user`.<br>- Remplissez les champs requis (Username, Email, First Name, Last Name).
 
+** Exemple pour illuster comment configurarer Keycloak deuis l'interface Admin Web"**
+
+![Keycloak Client](https://github.com/sanogotech/phpkeycloak/blob/main/images/oauth-client-secret-keyclock.jpg)
 
 ### Ajout d'un Utilisateur (Optionnel)
 
