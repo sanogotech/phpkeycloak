@@ -182,6 +182,20 @@ sequenceDiagram
 
 ```
 
+### Synthèse de l'Ajout de la Gestion des Erreurs
+
+| Action                           | Description                                                                                                                                                             |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Importation des classes          | Importer `GenericProvider` et `IdentityProviderException` de la bibliothèque OAuth2 pour gérer l'authentification et les exceptions.                                    |
+| Démarrage de session             | Démarrer une session PHP pour sauvegarder l'état OAuth2 entre les requêtes.                                                                                             |
+| Configuration de `GenericProvider` | Définir les paramètres du fournisseur OAuth2 incluant les URLs pour l'autorisation, l'obtention du token, et les informations de l'utilisateur.                         |
+| Bloc `try-catch`                 | Utiliser un bloc `try-catch` pour attraper et gérer les exceptions durant l'authentification et l'échange de token.                                                     |
+| Gestion de `IdentityProviderException` | Attraper spécifiquement les exceptions liées à l'échec de l'acquisition du token pour fournir un message d'erreur clair.                                                 |
+| Gestion des autres exceptions    | Attraper toutes les autres exceptions pour éviter les interruptions de script et fournir des détails pour le débogage.                                                  |
+
+Ce tableau offre un aperçu clair des étapes ajoutées au script PHP pour gérer les erreurs, rendant le processus d'intégration avec Keycloak plus résilient aux problèmes potentiels. Cela permet également aux développeurs qui utilisent le guide de comprendre rapidement les modifications et les ajouts sans avoir à analyser tout le script modifié en détail.
+
+
 ## Étape 6 : Exécution et Test
 
 - Lancez le serveur PHP sur un port spécifique (ex. `php -S 192.168.1.5:8080` dans le répertoire de votre projet).
