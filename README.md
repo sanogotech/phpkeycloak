@@ -199,6 +199,24 @@ sequenceDiagram
 
 ```
 
+Le tableau suivant résume les interactions clés entre l'utilisateur, l'application PHP, Keycloak, la base de données locale de Keycloak, et Active Directory pendant le processus d'authentification.
+
+| Participant               | Action                                                                                              | Description                                                                                        |
+|---------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Utilisateur (U)           | Demande d'authentification                                                                          | L'utilisateur initie le processus en tentant de se connecter via l'application PHP.                |
+| Application PHP (P)       | Redirection vers Keycloak                                                                           | L'application redirige l'utilisateur vers le formulaire de connexion de Keycloak.                  |
+| Utilisateur (U)           | Soumet les credentials                                                                              | L'utilisateur entre ses identifiants sur le formulaire de connexion de Keycloak.                   |
+| Keycloak (K)              | Vérification dans la base de données locale                                                         | Keycloak vérifie si l'utilisateur existe dans sa base de données locale.                           |
+| Base de données locale (BD)| Réponse à Keycloak                                                                                 | La base de données locale renvoie le résultat de la vérification à Keycloak.                       |
+| Keycloak (K)              | Requête à Active Directory si nécessaire                                                            | Si l'utilisateur n'est pas trouvé localement, Keycloak vérifie dans Active Directory.              |
+| Active Directory (AD)     | Réponse à Keycloak                                                                                  | Active Directory confirme si l'utilisateur existe ou non.                                          |
+| Keycloak (K)              | Mise à jour de la base locale                                                                       | Si trouvé dans AD, Keycloak crée ou met à jour l'utilisateur dans sa base de données locale.       |
+| Keycloak (K)              | Renvoie le token à l'application                                                                    | Si l'authentification est réussie, Keycloak renvoie un token à l'application PHP.                  |
+| Application PHP (P)       | Accès autorisé à l'utilisateur                                                                      | L'utilisateur reçoit l'accès après validation du token par l'application PHP.                      |
+| Keycloak (K)              | Affiche erreur d'authentification                                                                   | Si l'authentification échoue, Keycloak affiche un message d'erreur à l'utilisateur.                |
+
+Ce tableau aide à visualiser et comprendre les étapes séquentielles et les décisions prises lors de l'authentification d'un utilisateur, montrant l'interaction entre différents systèmes pour gérer l'authentification de manière sécurisée et efficace.
+
 ### Synthèse de l'Ajout de la Gestion des Erreurs
 
 | Action                           | Description                                                                                                                                                             |
