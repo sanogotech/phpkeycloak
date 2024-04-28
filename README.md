@@ -167,12 +167,6 @@ try {
 ## Étape 5 : Diagramme de Séquence Détaillé
 
 ```mermaid
-
-## Étape 6 : Diagramme de Séquence Détaillé
-
-Ce diagramme de séquence illustre le flux d'authentification détaillé, incluant la vérification de l'existence de l'utilisateur dans la base de données locale de Keycloak ainsi que dans Active Directory.
-
-```mermaid
 sequenceDiagram
     participant U as Utilisateur
     participant P as Application PHP
@@ -202,7 +196,6 @@ sequenceDiagram
     else Authentification échouée
         K-->>U: Affiche erreur d'authentification
     end
-
 
 ```
 
