@@ -73,6 +73,8 @@ composer require league/oauth2-client
 
 Créez un fichier index.php :
 
+** Exemple  simple** 
+
 ```php
 
 <?php
@@ -104,6 +106,49 @@ if (!isset($_GET['code'])) {
 
 ```
 
+**Exemple avec gestions des erreurs**
+
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+
+use League\OAuth2\Client\Provider\GenericProvider;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+
+session_start();
+
+$provider = new GenericProvider([
+    'clientId'                => 'my_phpCRM_app',
+    'clientSecret'            => '',  // Assurez-vous de sécuriser le secret client dans un environnement de production
+    'redirectUri'             => 'http://192.168.1.5:8080/',
+    'urlAuthorize'            => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/auth',
+    'urlAccessToken'          => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/token',
+    'urlResourceOwnerDetails' => 'http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/userinfo'
+]);
+
+try {
+    if (!isset($_GET['code'])) {
+        $authorizationUrl = $provider->getAuthorizationUrl();
+        $_SESSION['oauth2state'] = $provider->getState();
+        header('Location: ' . $authorizationUrl);
+        exit;
+    } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
+        unset($_SESSION['oauth2state']);
+        throw new Exception('Invalid state');
+    } else {
+        $accessToken = $provider->getAccessToken('authorization_code', ['code' => $_GET['code']]);
+        echo 'Access Token: ' . $accessToken->getToken();
+    }
+} catch (IdentityProviderException $e) {
+    // Token acquisition failed
+    exit('Token acquisition failed: ' . $e->getMessage());
+} catch (Exception $e) {
+    // Other errors
+    exit('An error occurred: ' . $e->getMessage());
+}
+```
+
 **Synthèse**
 
 | Fichier      | Action                                                                                                                                                                   |
@@ -119,7 +164,25 @@ if (!isset($_GET['code'])) {
 |              |   - `urlAccessToken` : `http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/token`                                                              |
 |              |   - `urlResourceOwnerDetails` : `http://192.168.1.100:8090/auth/realms/SecureSpaceCRM/protocol/openid-connect/userinfo`                                                  |
 
-## Étape 5 : Exécution et Test
+## Étape 5 : Diagramme de Séquence Détaillé
+
+```mermaid
+sequenceDiagram
+    participant U as Utilisateur
+    participant P as Application PHP
+    participant K as Keycloak
+    participant AD as Active Directory
+
+    U->>P: Demande d'accès à la ressource
+    P->>K: Redirection vers Keycloak pour authentification
+    K->>AD: Vérification des crédentials de l'utilisateur
+    AD->>K: Retour de la validation
+    K->>P: Retourne le token d'accès à l'application PHP
+    P->>U: Accès accordé avec le token
+
+```
+
+## Étape 6 : Exécution et Test
 
 - Lancez le serveur PHP sur un port spécifique (ex. `php -S 192.168.1.5:8080` dans le répertoire de votre projet).
 - Accédez à `http://192.168.1.5:8080/` dans votre navigateur.
