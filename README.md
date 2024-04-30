@@ -1,4 +1,5 @@
 
+
 # Intégration de Keycloak avec PHP
 
 Ce guide explique comment intégrer Keycloak à une application PHP pour gérer l'authentification et l'autorisation des utilisateurs.
